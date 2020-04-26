@@ -16,6 +16,7 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var artistText: UITextField!
     @IBOutlet weak var yearText: UITextField!
     
+    @IBOutlet weak var saveButton: UIButton!
     var chosenPainting = ""
     var chosenPaintingID : UUID?
     
@@ -24,6 +25,8 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
         //EĞER GELEN VERİ VARSA
         if chosenPainting != "" {
+            saveButton.isHidden = true
+            
             let appdelegate = UIApplication.shared.delegate as! AppDelegate
             let context =   appdelegate.persistentContainer.viewContext
             let fetchRequest =  NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
@@ -55,6 +58,11 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                 print("Error")
             }
         }
+        else {
+            saveButton.isHidden = false
+            saveButton.isEnabled = false
+        }
+        
         
         
         let gestureRecorganizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboadar))
@@ -81,6 +89,7 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imageView.image = info[.editedImage] as? UIImage
+        saveButton.isEnabled = true
         self.dismiss(animated: true, completion: nil)
         
     }
@@ -110,9 +119,7 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         NotificationCenter.default.post(name: NSNotification.Name("yeniveri"), object: nil)
         self.navigationController?.popViewController(animated: true)
-        
-        
-        
-        
     }
+    
+    
 }

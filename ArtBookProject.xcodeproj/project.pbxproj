@@ -14,6 +14,7 @@
 		EAB77A2E2455D94B00904ECD /* ArtBookProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAB77A2C2455D94B00904ECD /* ArtBookProject.xcdatamodeld */; };
 		EAB77A302455D94E00904ECD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB77A2F2455D94E00904ECD /* Assets.xcassets */; };
 		EAB77A332455D94E00904ECD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB77A312455D94E00904ECD /* LaunchScreen.storyboard */; };
+		EAB77A3B2456070D00904ECD /* detailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB77A3A2456070D00904ECD /* detailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EAB77A2F2455D94E00904ECD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAB77A322455D94E00904ECD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAB77A342455D94E00904ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB77A3A2456070D00904ECD /* detailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				EAB77A312455D94E00904ECD /* LaunchScreen.storyboard */,
 				EAB77A342455D94E00904ECD /* Info.plist */,
 				EAB77A2C2455D94B00904ECD /* ArtBookProject.xcdatamodeld */,
+				EAB77A3A2456070D00904ECD /* detailVC.swift */,
 			);
 			path = ArtBookProject;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				EAB77A282455D94B00904ECD /* ViewController.swift in Sources */,
 				EAB77A242455D94B00904ECD /* AppDelegate.swift in Sources */,
 				EAB77A262455D94B00904ECD /* SceneDelegate.swift in Sources */,
+				EAB77A3B2456070D00904ECD /* detailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

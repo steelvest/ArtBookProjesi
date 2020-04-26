@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -14,9 +15,19 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var artistText: UITextField!
     @IBOutlet weak var yearText: UITextField!
+    
+    var chosenPainting = ""
+    var chosenPaintingID : UUID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //EĞER GELEN VERİ VARSA
+        if chosenPainting != "" {
+            
+        }
+        
+        
         let gestureRecorganizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboadar))
         view.addGestureRecognizer(gestureRecorganizer)
         // Do any additional setup after loading the view.
@@ -45,6 +56,34 @@ class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
     }
     @IBAction func savebuttonClicked(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newpainting = NSEntityDescription.insertNewObject(forEntityName: "Paintings", into: context)
+        
+        //Ekleme
+        newpainting.setValue(nameText.text, forKey: "name")
+        newpainting.setValue(artistText.text, forKey: "artist")
+        if let year = Int(yearText.text!) {
+            newpainting.setValue(year, forKey: "year")
+        }
+        newpainting.setValue(UUID(), forKey: "id")
+        let data = imageView.image!.jpegData(compressionQuality: 0.5)
+        
+        newpainting.setValue(data, forKey: "image")
+        do {
+            try context.save()
+        } catch {
+            print("Hata Var")
+        }
+
+        //Geri Git
+        
+        NotificationCenter.default.post(name: NSNotification.Name("yeniveri"), object: nil)
+        self.navigationController?.popViewController(animated: true)
+        
+        
+        
         
     }
 }

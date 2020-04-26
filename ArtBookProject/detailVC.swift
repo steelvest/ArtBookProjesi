@@ -17,7 +17,22 @@ class detailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let gestureRecorganizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboadar))
+        view.addGestureRecognizer(gestureRecorganizer)
         // Do any additional setup after loading the view.
+        
+        imageView.isUserInteractionEnabled = true
+        let imageTaprecorganizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
+        imageView.addGestureRecognizer(imageTaprecorganizer)
+    }
+    
+    //KLAVYE KAPATMA
+    @objc func hideKeyboadar() {
+        view.endEditing(true)
+    }
+    
+    @objc func selectImage() {
+        
     }
     @IBAction func savebuttonClicked(_ sender: Any) {
         

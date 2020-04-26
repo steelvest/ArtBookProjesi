@@ -8,7 +8,7 @@
 
 import UIKit
 
-class detailVC: UIViewController {
+class detailVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameText: UITextField!
@@ -32,6 +32,16 @@ class detailVC: UIViewController {
     }
     
     @objc func selectImage() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imageView.image = info[.editedImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
         
     }
     @IBAction func savebuttonClicked(_ sender: Any) {
